@@ -32,21 +32,30 @@ var balancedParens = function(input) {
     // Parens enclose one another
     // Parens can be balanced at center or individual
   // Edge Cases:
-
-  // Must be an even number
-  // Every parens must have a corresponding closing parens
-  // Must be able to keep track index of parens and closing parens
-  // Declare a variable with all parens
-  let parens = ['(',')','[',']','{','}'];
-  // Declare an obj to keep track of all parens and their location
-  let parensObj = {};
-  // Use a for loop to get through char of the input
-   // If the char is a parens, store it into obj as an array with its location
-   for(let i = 0; i < input.length; i++) {
-     let character = input.charAt(i);
-     if(parens.indexOf(character) !== -1) {
-       parensObj[character] = i;
-     }
-   }
-   return parensObj;
+    // What degines a balanced parens?
+    // Empty string
+    // Must be able to keep track index of parens and closing parens
+    // Declare a variable with all parens
+  let stack = [];
+  let open = {
+    '(' : ')',
+    '[' : ']',
+    '{' : '}'
+  }
+  let close = {
+    ')' : true,
+    ']' : true,
+    '}' : true
+  }
+  for(let i = 0; i < input.length; i++) {
+    let character = input.charAt(i);
+    if (open[character]) {
+      stack.push(character);
+    } else if (close[character]) {
+      debugger;
+      // Check if any other parens opens before closing another
+      if(open[stack.pop()] !== character) return false;
+    }
+  }
+  return stack.length === 0;
 };
