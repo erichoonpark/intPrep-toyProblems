@@ -45,30 +45,32 @@ const characterFrequency = function(string) {
 
   // Declare an array for the result (result)
   let result = [];
-  // Declare an object for the char (charObj)
-  let charObj = {};
-  // Convert the string into an array
-  string = string.split('');
+  // Declare an object for the char (charFreq)
+  let charFreq = {};
   // Loop through each character in the inputArr
   for (let i = 0; i < string.length; i++) {
-    // if char doesn't exist in obj, create a new property with a value one
-    if (!(charObj.hasOwnProperty(string[i]))) {
-      charObj[string[i]] = 1;
+    let character = string.charAt(i);
+    if (!charFreq[character]) {
+      charFreq[character] = 1;
     } else {
       // else increment the value by one
-      charObj[string[i]] += 1;
+      charFreq[character]++;
     }
   }
 
-  let allKeys = Object.keys(charObj);
-  // Find all the keys of the object using Object.keys(charObj)
-  // Store keys into a new var (keys)
-  // Sort the keys within the keys array for alphabetical order
-  allKeys = allKeys.sort()
-  // Using a for loop or forEach, push each key and its corresponding value into the returnArr
-  allKeys.forEach(function(element) {
-    result[element] = charObj[element];
-  })
-  //
+  for (let key in charFreq) {
+    result.push([key, charFreq[key]]);
+  }
+
+  result.sort(function(a, b) {
+   if (a[1] > b[1]) return -1;
+   if (a[1] < b[1]) return 1;
+   if (a[1] === b[1]) {
+    if (a[0] < b[0]) return -1;
+    if (a[0] > b[0]) return 1;
+   }
+   return 0;
+  });
+
   return result;
 };
