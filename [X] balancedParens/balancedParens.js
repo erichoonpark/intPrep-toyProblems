@@ -52,7 +52,6 @@ var balancedParens = function(input) {
     if (open[character]) {
       stack.push(character);
     } else if (close[character]) {
-      debugger;
       // Check if any other parens opens before closing another
       if(open[stack.pop()] !== character) return false;
     }
