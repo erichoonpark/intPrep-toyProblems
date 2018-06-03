@@ -9,5 +9,19 @@
 
 
 var largestProductOfThree = function(array) {
-  // TODO: everything
+  // Input: Array of integers
+  // Output: An integer, consisting for the largest product of three numbers
+  // Constraints: 
+  // Edge Cases: Negative numbers, array less than 3 
+
+  // Declare a variable to hold the largest product
+  let largestProduct = 1;
+  // Sort the array using the .sort(function(a,b) {return b > a})
+  array = array.sort(function(a,b){return b > a});
+  // Multiply the first three numbers using a for loop
+  for (let i = 0; i < 3; i++) {
+    largestProduct *= array[i];
+  }
+  // Return largestProduct
+  return largestProduct;
 };
