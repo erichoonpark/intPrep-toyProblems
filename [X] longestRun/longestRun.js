@@ -22,30 +22,24 @@ var longestRun = function (string) {
   // Need to determine a longest run of identifical characters
   // Get the start and end indices of that run
 
-  // Case for empty string 
-  if (string === "") {return null;}
-  // Declare a storage object
-  let chars = {};
-  // Transform the string in an array 
-  let stringArray = string.split('');
-  // Store all characters within an object with the char as the key and its indice as a value
-  for (let i = 0; i < stringArray.length; i++) {
-    if(chars[stringArray[i]]) {
-      chars[stringArray[i]].push(i);
+  // Variale to hold the histoical longest run
+  let max = [0,0];
+  // Variable to hold current run
+  let curr = [0,0];
+
+  for (let i = 1; i < string.length; i++) {
+    if(string[i-1] === string[i]) {
+      curr[1] = i;
+      // Compare if the current run is longer than previous max
+      if(curr[1] - curr[0] > max[1] -max[0]) {
+        max = curr;
+      }
     } else {
-      chars[stringArray[i]] = [i];
+      // If there is no run
+      curr = [i,i];
     }
   }
-  
-  // The characters and their indices are now in an objects, chars
-  // Check each keys array to see if they are consecutive
-  for (let prop in chars) {
-    if (chars[prop].length > 1) {
-
-    }
-  }
-  // Using a variable, mostCons, return the char with the most consecutive chars
-
+  return max;
 };
 
 // If you need a random string generator, use this!
