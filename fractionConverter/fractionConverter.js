@@ -13,5 +13,22 @@
  */
 
 var toFraction = function(number) {
-  // Your code here
+  // Input: A float or integer
+  // Output: A fraction within a string representing the float
+  // Constaints: Whole numbers should be returned as irregular fractions
+  // Edge Cases: 
+
+  // How do you convert the float into a fraction programatically? 
+    // .12 = '1/8'
+    // .33 = '1/3'
+    // .5 = '1/2'
+
+  // Take out the whole number from integer
+  // Declare a variable to hold the whole number 
+  let wholeNum = number.toString();
+  // Find the decimal in the float to determine if there needs to be a irregular fraction
+  
+
+
+  
 };
