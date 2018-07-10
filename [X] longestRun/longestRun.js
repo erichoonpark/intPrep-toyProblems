@@ -26,6 +26,7 @@ var longestRun = function (string) {
   let max = [0,0];
   // Variable to hold current run
   let curr = [0,0];
+  if (string === "") {return null};
 
   for (let i = 1; i < string.length; i++) {
     if(string[i-1] === string[i]) {
